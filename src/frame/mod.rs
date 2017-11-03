@@ -41,11 +41,11 @@ impl<'v, 'i, 'c, I, C> RowIndex<'c> for DataFrame<'v, 'i, 'c, I, C>
         self.index.len()
     }
 
-    fn loc(&'c self, label: &Self::Key) -> Self::Row {
+    fn loc(&'c self, _label: &Self::Key) -> Self::Row {
         unimplemented!()
     }
 
-    fn iloc(&'c self, locaiton: &usize) -> Self::Row {
+    fn iloc(&'c self, _locaiton: &usize) -> Self::Row {
         unimplemented!()
     }
 
@@ -68,7 +68,7 @@ impl<'v, 'i, 'c, I, C> RowIndex<'c> for DataFrame<'v, 'i, 'c, I, C>
                             Cow::Borrowed(self.columns.borrow()))
     }
 
-    fn blocs(&self, labels: &[bool]) -> Self {
+    fn blocs(&self, _labels: &[bool]) -> Self {
         unimplemented!()
         // ToDo: fix Series impl
     }
@@ -81,11 +81,11 @@ impl<'v, 'i, 'c, I, C> ColIndex<'i> for DataFrame<'v, 'i, 'c, I, C>
     type Key = C;
     type Column = Array;
 
-    fn get(&'i self, label: &Self::Key) -> Self::Column {
+    fn get(&'i self, _label: &Self::Key) -> Self::Column {
         unimplemented!();
     }
 
-    fn iget(&'i self, loc: &usize) -> Self::Column {
+    fn iget(&'i self, _loc: &usize) -> Self::Column {
         unimplemented!();
     }
 

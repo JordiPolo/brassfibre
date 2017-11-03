@@ -77,7 +77,7 @@ impl<U> Slicer for Indexer<U>
         Indexer::new(new_values)
     }
 
-    fn ilocs_forced(&self, locations: &[usize]) -> Self {
+    fn ilocs_forced(&self, _locations: &[usize]) -> Self {
         unimplemented!()
     }
 
