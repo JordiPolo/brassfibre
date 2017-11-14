@@ -138,7 +138,6 @@ fn test_write_csv() {
 
 #[test]
 fn test_file_io() {
-
     let values = vec![
         array!["x".to_string(), "y".to_string(), "z".to_string()],
         array![true, false, true],
@@ -155,13 +154,11 @@ fn test_file_io() {
             "D".to_string(),
         ],
     );
-    let mut wtr = csv::Writer::from_file("./data.csv").unwrap();
+    let mut wtr = csv::Writer::from_path("./data.csv").unwrap();
     df.write_csv(&mut wtr).unwrap();
     wtr.flush().unwrap();
 
-    let rdr = csv::Reader::from_file("./data.csv").unwrap().has_headers(
-        true,
-    );
+    let rdr = csv::ReaderBuilder::new().has_headers(true).from_path("./data.csv").unwrap();
     let res = DataFrame::<usize, String>::read_csv(rdr).unwrap();
     println!("{:?}", df.dtypes());
     println!("{:?}", res.dtypes());
